@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "10 SEO Strategies to Boost Your Rankings in 2025",
+    "excerpt": "Discover the latest SEO techniques and best practices to improve your search engine visibility.",
+    "date": "March 15, 2025",
+    "category": "SEO",
+    "link": "/blog/seo-strategies-2025"
+  },
+  {
+    "id": 2,
+    "title": "How AI is Transforming Digital Marketing",
+    "excerpt": "Explore how artificial intelligence is revolutionizing marketing automation and customer engagement.",
+    "date": "March 10, 2025",
+    "category": "AI & Marketing",
+    "link": "/blog/ai-marketing-guide"
+  },
+  {
+    "id": 3,
+    "title": "Building High-Performance Web Applications",
+    "excerpt": "Learn the essential techniques for creating fast, scalable, and user-friendly web applications.",
+    "date": "March 5, 2025",
+    "category": "Development",
+    "link": "/blog/web-development-guide"
+  }
+]
+

@@ -4,36 +4,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
-
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    role: "Founder, TechVenture",
-    content:
-      "Sahu4you transformed our online presence completely. Our website now converts visitors at 3x the rate, and we couldn't be happier with the results.",
-    rating: 5,
-    image: "/professional-indian-woman-entrepreneur-headshot--b.jpg",
-  },
-  {
-    name: "Ravi Patel",
-    role: "CEO, GrowthEngine",
-    content:
-      "Working with Vikas was a game-changer. They didn't just build a website - they built a growth engine. Our sales have doubled in 6 months.",
-    rating: 5,
-    image: "/professional-indian-male-ceo-headshot--confident-s.jpg",
-  },
-  {
-    name: "Anjali Desai",
-    role: "Marketing Head, EcoShop",
-    content:
-      "The AI chatbot they integrated saves us 20+ hours per week. It's like having a 24/7 customer service team that never sleeps.",
-    rating: 5,
-    image: "/professional-indian-woman-marketing-executive-head.jpg",
-  },
-]
+import testimonialsData from "@/content/testimonials.json"
 
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const testimonials = testimonialsData
 
   return (
     <section className="py-20 md:py-32 bg-white">

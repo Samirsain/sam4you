@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "question": "How long does it take to build a website?",
+    "answer": "Typically 2-4 weeks depending on complexity. We follow an agile development process with regular updates."
+  },
+  {
+    "id": 2,
+    "question": "Do you provide ongoing support?",
+    "answer": "Yes! We offer 24/7 support packages and maintenance plans to keep your website running smoothly."
+  },
+  {
+    "id": 3,
+    "question": "Can you help with SEO and digital marketing?",
+    "answer": "Absolutely! We provide comprehensive SEO, content marketing, and paid advertising services."
+  },
+  {
+    "id": 4,
+    "question": "What technologies do you use?",
+    "answer": "We use modern technologies like Next.js, React, Node.js, and AI tools to build fast, scalable solutions."
+  }
+]
+

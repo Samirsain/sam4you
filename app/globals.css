@@ -3,8 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
 :root {
-  /* Updated to light, premium theme inspired by sahu4you.com */
+  /* Modern, premium theme */
   --background: oklch(0.99 0 0);
   --foreground: oklch(0.15 0 0);
   --card: oklch(1 0 0);

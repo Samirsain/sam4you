@@ -6,8 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageCircle } from "lucide-react"
+import { Mail, MessageCircle, CheckCircle, AlertCircle } from "lucide-react"
 import { useState } from "react"
+
+// Formspree endpoint
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myznwrqa'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,11 +18,39 @@ export default function Contact() {
     email: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic here (Formspree/Netlify Forms)
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        throw new Error('Failed to submit form')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -46,8 +77,8 @@ export default function Contact() {
                 <CardDescription>Send us an email anytime</CardDescription>
               </CardHeader>
               <CardContent>
-                <a href="mailto:hello@devxmir.com" className="text-primary hover:underline">
-                  hello@devxmir.com
+                <a href="mailto:devxmir@gmail.com" className="text-primary hover:underline">
+                  devxmir@gmail.com
                 </a>
               </CardContent>
             </Card>
@@ -61,8 +92,13 @@ export default function Contact() {
                 <CardDescription>Chat with us instantly</CardDescription>
               </CardHeader>
               <CardContent>
+                <div className="mb-3">
+                  <a href="tel:+919352410667" className="text-primary hover:underline text-sm">
+                    +91 9352410667
+                  </a>
+                </div>
                 <Button asChild variant="outline" className="w-full bg-transparent">
-                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/919352410667" target="_blank" rel="noopener noreferrer">
                     Start Chat
                   </a>
                 </Button>
@@ -118,8 +154,28 @@ export default function Contact() {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full">
-                  Send Message
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="flex items-center gap-2 p-3 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-400">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">Message sent successfully! We'll get back to you soon.</span>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400">
+                    <AlertCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">Failed to send message. Please try again or contact us directly.</span>
+                  </div>
+                )}
+
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>

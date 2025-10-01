@@ -3,26 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
-const blogPosts = [
-  {
-    title: "10 SEO Strategies to Boost Your Rankings in 2025",
-    excerpt: "Discover the latest SEO techniques and best practices to improve your search engine visibility.",
-    date: "March 15, 2025",
-    category: "SEO",
-  },
-  {
-    title: "How AI is Transforming Digital Marketing",
-    excerpt: "Explore how artificial intelligence is revolutionizing marketing automation and customer engagement.",
-    date: "March 10, 2025",
-    category: "AI & Marketing",
-  },
-  {
-    title: "Building High-Performance Web Applications",
-    excerpt: "Learn the essential techniques for creating fast, scalable, and user-friendly web applications.",
-    date: "March 5, 2025",
-    category: "Development",
-  },
-]
+import blogPosts from "@/content/blog-posts.json"
 
 export default function BlogSection() {
   return (
@@ -58,9 +39,11 @@ export default function BlogSection() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base mb-4 leading-relaxed">{post.excerpt}</CardDescription>
-                <Button variant="ghost" className="group-hover:text-primary p-0">
-                  Read More
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                <Button variant="ghost" className="group-hover:text-primary p-0" asChild>
+                  <a href={post.link} target="_blank" rel="noopener noreferrer">
+                    Read More
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
                 </Button>
               </CardContent>
             </Card>

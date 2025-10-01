@@ -1,6 +1,6 @@
-# DevXmir - Digital Agency Website
+# Sam4You - Digital Agency Website
 
-A modern, responsive marketing website for DevXmir digital agency built with Next.js, Tailwind CSS, and shadcn/ui.
+A modern, responsive marketing website for Sam4You digital agency built with Next.js, Tailwind CSS, and shadcn/ui with Supabase integration.
 
 ## Features
 
@@ -22,6 +22,7 @@ A modern, responsive marketing website for DevXmir digital agency built with Nex
 - **Framework:** Next.js 15 (App Router)
 - **Styling:** Tailwind CSS v4
 - **UI Components:** shadcn/ui
+- **Database:** Supabase (PostgreSQL)
 - **Fonts:** Geist Sans & Geist Mono
 - **Icons:** Lucide React
 - **Analytics:** Vercel Analytics
@@ -83,7 +84,7 @@ yarn dev
 
 ### Update Content
 
-1. **Company Name:** Search and replace "DevXmir" throughout the project
+1. **Company Name:** Search and replace "Same4You" throughout the project
 2. **Contact Info:** Update email and WhatsApp links in `components/contact.tsx`
 3. **Social Media:** Update social links in `components/footer.tsx`
 4. **Services:** Edit the services array in `components/services.tsx`
@@ -135,15 +136,26 @@ npm run build
 npm start
 \`\`\`
 
-## Environment Variables
+## Supabase Setup
 
-For form submissions, add these to your `.env.local`:
+1. **Create a Supabase Project:**
+   - Go to [supabase.com](https://supabase.com)
+   - Create a new project
+   - Get your project URL and anon key
+
+2. **Set up Database:**
+   - Run the SQL schema from `supabase/schema.sql` in your Supabase SQL editor
+   - This creates the `contact_messages` table with proper security policies
+
+3. **Environment Variables:**
+   Create a `.env.local` file in your project root:
 
 \`\`\`env
-NEXT_PUBLIC_FORMSPREE_ID=your_formspree_id
-# or
-NEXT_PUBLIC_NETLIFY_FORM=true
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 \`\`\`
+
+Get these values from: Project Settings → API → Project URL & anon public key
 
 ## SEO
 
@@ -164,8 +176,8 @@ The site includes:
 ## Support
 
 For issues or questions:
-- Email: hello@devxmir.com
-- WhatsApp: [Add your number]
+- Email: devxmir@gmail.com
+- WhatsApp: +91 9352410667
 
 ## License
 

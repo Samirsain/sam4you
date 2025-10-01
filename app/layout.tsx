@@ -4,16 +4,17 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "DevXmir - Build Smarter Digital Solutions",
+  title: "Sam4You - Build Smarter Digital Solutions",
   description:
-    "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with DevXmir.",
+    "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
   keywords: ["web development", "SEO", "AI tools", "automation", "digital agency", "WordPress", "e-commerce"],
-  authors: [{ name: "DevXmir" }],
+  authors: [{ name: "Sam4You" }],
   openGraph: {
-    title: "DevXmir - Build Smarter Digital Solutions",
+    title: "Sam4You - Build Smarter Digital Solutions",
     description: "Professional web development, SEO, AI tools, and automation services.",
     type: "website",
   },
@@ -26,10 +27,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
+          <Suspense fallback={null}>{children}</Suspense>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

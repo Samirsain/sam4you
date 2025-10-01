@@ -3,33 +3,46 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Search } from "lucide-react"
+import Image from "next/image"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#services", label: "Services" },
-    { href: "#ai-tools", label: "AI Tools" },
-    { href: "#blog", label: "Blog" },
-    { href: "#about", label: "About" },
+    { href: "/", label: "Home" },
+    { href: "/services", label: "Services" },
+    { href: "/ai-tools", label: "AI Tools" },
+    { href: "/blog", label: "Blog" },
+    { href: "/about", label: "About" },
     { href: "#contact", label: "Contact" },
   ]
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
+        isScrolled ? "bg-background/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-border/50" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -37,13 +50,28 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl md:text-3xl font-bold text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            DevXmir
+            {/* Light mode logo (black) */}
+            <Image
+              src="/sam4you-logo.png"
+              alt="Sam4You Logo"
+              width={150}
+              height={50}
+              className="object-contain h-10 md:h-12 w-auto dark:hidden"
+            />
+            {/* Dark mode logo (white) */}
+            <Image
+              src="/sam4you-logo-white.png"
+              alt="Sam4You Logo"
+              width={150}
+              height={50}
+              className="object-contain h-10 md:h-12 w-auto hidden dark:block"
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -55,11 +83,34 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button asChild>
-              <Link href="#contact">Get Started</Link>
-            </Button>
+          {/* Search Bar, Theme Toggle & CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <div className={`relative transition-all duration-300 ${isSearchOpen ? 'w-64' : 'w-10'}`}>
+              <button
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Search"
+              >
+                <Search size={18} />
+              </button>
+              {isSearchOpen && (
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search services, tools..."
+                  className="w-full h-10 pl-10 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+                  autoFocus
+                />
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button asChild>
+                <Link href="#contact">Get Started</Link>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -76,6 +127,24 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col gap-4">
+              {/* Mobile Search */}
+              <div className="relative">
+                <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search services, tools..."
+                  className="w-full h-10 pl-10 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+                />
+              </div>
+
+              {/* Mobile Theme Toggle */}
+              <div className="flex items-center justify-between py-2 px-2 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <span className="text-sm font-medium text-muted-foreground">Theme</span>
+                <ThemeToggle />
+              </div>
+              
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

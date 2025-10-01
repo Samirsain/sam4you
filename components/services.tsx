@@ -34,8 +34,8 @@ const services = [
       "Blog content creation (long-form, optimized)",
       "Local & global ranking strategy"
     ],
-    color: "from-violet-500 to-purple-500",
-    bgGradient: "from-violet-50 to-purple-50/50",
+    color: "from-blue-500 to-blue-600",
+    bgGradient: "from-blue-50 to-blue-50/50",
   },
   {
     icon: ShoppingCart,
@@ -134,7 +134,7 @@ export default function Services() {
               onClick={() => setActiveCategory(category)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                 activeCategory === category
-                  ? "bg-purple-600 text-white shadow-lg"
+                  ? "bg-blue-600 text-white shadow-lg"
                   : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >
@@ -150,12 +150,12 @@ export default function Services() {
             return (
               <Card
                 key={index}
-                className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-purple-200 dark:hover:border-purple-600"
+                className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-blue-200 dark:hover:border-blue-600"
               >
                 {/* Featured Badge */}
                 {service.featured && (
                   <div className="absolute top-4 right-4 z-10">
-                    <span className="px-3 py-1 text-xs font-semibold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full">
+                    <span className="px-3 py-1 text-xs font-semibold bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full">
                       Featured
                     </span>
                   </div>
@@ -198,7 +198,7 @@ export default function Services() {
                   <Button 
                     asChild 
                     variant="outline" 
-                    className="w-full group/btn hover:bg-purple-50 hover:border-purple-300 transition-all"
+                    className="w-full group/btn hover:bg-blue-50 hover:border-blue-300 transition-all"
                   >
                     <Link href="#contact">
                       Learn More
@@ -213,22 +213,22 @@ export default function Services() {
 
         {/* Stats Banner */}
         <div className="mt-20 text-center">
-          <div className="inline-block bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/50 dark:to-blue-900/50 rounded-2xl px-8 py-6 shadow-lg border border-purple-100 dark:border-purple-800">
-            <p className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">500+ Projects Completed</p>
+          <div className="inline-block bg-gradient-to-r from-blue-50 to-blue-50 dark:from-blue-900/50 dark:to-blue-900/50 rounded-2xl px-8 py-6 shadow-lg border border-blue-100 dark:border-blue-800">
+            <p className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">500+ Projects Completed</p>
             <p className="text-sm text-gray-600 dark:text-gray-300">Trusted by businesses worldwide</p>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="mt-20 bg-gradient-to-br from-purple-600 to-blue-600 dark:from-purple-700 dark:to-blue-700 rounded-3xl p-8 md:p-12 text-center text-white">
+        <div className="mt-20 bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 rounded-3xl p-8 md:p-12 text-center text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your Digital Presence?
           </h3>
-          <p className="text-lg text-purple-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
             Join hundreds of businesses that have grown with our expert digital services. Let's discuss your project and create a custom strategy for your success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button asChild size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+            <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
               <Link href="#contact">
                 Free Consultation
               </Link>

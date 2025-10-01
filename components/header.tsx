@@ -52,21 +52,12 @@ export default function Header() {
             href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            {/* Light mode logo (black) */}
             <Image
-              src="/sam4you-logo.png"
+              src="/Sam4You.svg"
               alt="Sam4You Logo"
               width={150}
               height={50}
-              className="object-contain h-10 md:h-12 w-auto dark:hidden"
-            />
-            {/* Dark mode logo (white) */}
-            <Image
-              src="/sam4you-logo-white.png"
-              alt="Sam4You Logo"
-              width={150}
-              height={50}
-              className="object-contain h-10 md:h-12 w-auto hidden dark:block"
+              className="object-contain h-10 md:h-12 w-auto"
             />
           </Link>
 

@@ -14,7 +14,7 @@ export default function Testimonials() {
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-4">
-          <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-medium">
+          <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
             ⭐ Powered by Real Businesses
           </span>
         </div>
@@ -27,7 +27,7 @@ export default function Testimonials() {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Card className="border-purple-200 shadow-xl bg-white">
+          <Card className="border-blue-200 shadow-xl bg-white">
             <CardContent className="p-8 md:p-12">
               <div className="flex items-start gap-6 mb-6">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
@@ -41,7 +41,7 @@ export default function Testimonials() {
                 <div>
                   <div className="flex gap-1 mb-3">
                     {Array.from({ length: testimonials[activeIndex].rating }).map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-purple-600 text-purple-600" />
+                      <Star key={i} className="w-5 h-5 fill-blue-600 text-blue-600" />
                     ))}
                   </div>
                   <div className="font-bold text-lg">{testimonials[activeIndex].name}</div>
@@ -60,7 +60,7 @@ export default function Testimonials() {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  index === activeIndex ? "bg-purple-600 w-8" : "bg-gray-300"
+                  index === activeIndex ? "bg-blue-600 w-8" : "bg-gray-300"
                 }`}
                 aria-label={`View testimonial ${index + 1}`}
               />

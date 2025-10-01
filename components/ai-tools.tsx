@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { FileSearch, Sparkles, MessageSquare, ArrowRight } from "lucide-react"
+import { FileSearch, Sparkles, MessageSquare, Video, Instagram, Zap, BarChart3, Share2, Mail, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 const tools = [
@@ -18,9 +18,45 @@ const tools = [
   },
   {
     icon: MessageSquare,
-    title: "Meta Caption Tool",
-    description: "Create engaging meta descriptions and social media captions instantly.",
+    title: "Meta Caption Generator",
+    description: "Create engaging social media captions for all platforms instantly.",
     href: "/tools/meta-caption",
+  },
+  {
+    icon: Video,
+    title: "Pinterest Video Downloader",
+    description: "Download videos from Pinterest pins easily and quickly.",
+    href: "/tools/pinterest-downloader",
+  },
+  {
+    icon: Instagram,
+    title: "Instagram Tools Suite",
+    description: "Generate Instagram bios, name suggestions, and username ideas.",
+    href: "/tools/instagram-tools",
+  },
+  {
+    icon: BarChart3,
+    title: "Free SEO Tools",
+    description: "Essential free tools to analyze and improve your website's SEO performance.",
+    href: "/tools/seo-tools",
+  },
+  {
+    icon: Zap,
+    title: "Speed Testing Tools",
+    description: "Top tools to test and optimize your website loading speed.",
+    href: "/tools/speed-tools",
+  },
+  {
+    icon: Share2,
+    title: "Social Media Tools",
+    description: "Best tools for managing and scheduling social media posts across platforms.",
+    href: "/tools/social-tools",
+  },
+  {
+    icon: Mail,
+    title: "Email Marketing Tools",
+    description: "Compare the best email marketing platforms for your business needs.",
+    href: "/tools/email-tools",
   },
 ]
 
@@ -37,7 +73,7 @@ export default function AITools() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 max-w-8xl mx-auto">
           {tools.map((tool, index) => {
             const Icon = tool.icon
             return (

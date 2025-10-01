@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
                   <Link href="/" className="mb-4 block">
                     <Image
-                      src="/sam4you-logo-white.png"
+                      src="/Sam4You.svg"
                       alt="Sam4You Logo"
                       width={150}
                       height={50}

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
   keywords: ["web development", "SEO", "AI tools", "automation", "digital agency", "WordPress", "e-commerce"],
   authors: [{ name: "Sam4You" }],
+  verification: {
+    google: "ziDZd_lijC0FXqCM7zawWTZ5IXuosqWYbzNhYhSXNfI",
+  },
   openGraph: {
     title: "Sam4You - Build Smarter Digital Solutions",
     description: "Professional web development, SEO, AI tools, and automation services.",

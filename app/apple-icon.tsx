@@ -14,7 +14,7 @@ export default function AppleIcon() {
       <div
         style={{
           fontSize: 72,
-          background: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+          background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -23,9 +23,49 @@ export default function AppleIcon() {
           color: 'white',
           fontWeight: 'bold',
           borderRadius: '20%',
+          position: 'relative',
         }}
       >
-        S4Y
+        {/* Sam4You Logo Representation - High Quality */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '120px',
+            height: '120px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {/* Upper curved shape - larger and more detailed */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '80px',
+              height: '40px',
+              background: 'linear-gradient(45deg, #1e40af, #3b82f6)',
+              borderRadius: '50% 50% 0 0',
+              transform: 'rotate(-15deg)',
+              top: '10px',
+              left: '20px',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+            }}
+          />
+          {/* Lower curved shape - larger and more detailed */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '80px',
+              height: '40px',
+              background: 'linear-gradient(45deg, #3b82f6, #60a5fa)',
+              borderRadius: '0 0 50% 50%',
+              transform: 'rotate(15deg)',
+              bottom: '10px',
+              right: '20px',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+            }}
+          />
+        </div>
       </div>
     ),
     {

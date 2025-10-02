@@ -13,8 +13,8 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 24,
-          background: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+          fontSize: 20,
+          background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -23,9 +23,47 @@ export default function Icon() {
           color: 'white',
           fontWeight: 'bold',
           borderRadius: '20%',
+          position: 'relative',
         }}
       >
-        S4Y
+        {/* Sam4You Logo Representation */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '24px',
+            height: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {/* Upper curved shape */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '16px',
+              height: '8px',
+              background: 'linear-gradient(45deg, #1e40af, #3b82f6)',
+              borderRadius: '50% 50% 0 0',
+              transform: 'rotate(-15deg)',
+              top: '2px',
+              left: '4px',
+            }}
+          />
+          {/* Lower curved shape */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '16px',
+              height: '8px',
+              background: 'linear-gradient(45deg, #3b82f6, #60a5fa)',
+              borderRadius: '0 0 50% 50%',
+              transform: 'rotate(15deg)',
+              bottom: '2px',
+              right: '4px',
+            }}
+          />
+        </div>
       </div>
     ),
     {

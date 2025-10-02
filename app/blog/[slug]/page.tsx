@@ -59,9 +59,10 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
           {/* Post Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <div className="whitespace-pre-line text-gray-700 dark:text-gray-300 leading-relaxed">
-              {post.content}
-            </div>
+            <div 
+              className="text-gray-700 dark:text-gray-300 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </div>
 
           {/* CTA Section */}
@@ -74,9 +75,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild className="bg-green-600 hover:bg-green-700">
-                <Link href="/#contact">
+                <a href="https://wa.me/919352410667?text=Hi!%20I%27m%20interested%20in%20a%20free%20consultation%20after%20reading%20your%20blog." target="_blank" rel="noopener noreferrer">
                   Get Free Consultation
-                </Link>
+                </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/services">

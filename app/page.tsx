@@ -3,6 +3,7 @@ import Hero from "@/components/hero"
 import Resources from "@/components/resources"
 import Testimonials from "@/components/testimonials"
 import FAQ from "@/components/faq"
+import Newsletter from "@/components/newsletter"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import Link from "next/link"
@@ -90,6 +91,7 @@ export default function Home() {
 
       <Testimonials />
       <FAQ />
+      <Newsletter />
       <Contact />
       <Footer />
     </main>

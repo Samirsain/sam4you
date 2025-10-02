@@ -58,9 +58,9 @@ export default function Hero() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="w-full sm:w-auto text-lg px-8 py-4 transform hover:scale-105 hover:shadow-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300">
-              <Link href="#contact">
+              <a href="https://wa.me/919352410667?text=Hi!%20I%27m%20interested%20in%20a%20free%20consultation%20for%20my%20project." target="_blank" rel="noopener noreferrer">
                 Book Free Consultation
-              </Link>
+              </a>
             </Button>
           </div>
 

@@ -9,54 +9,66 @@ import { useState } from "react"
 const resources = {
   "AI": [
     {
-      title: "Best AI Tools for PPT Presentations",
-      description: "Discover top AI-powered tools for creating engaging PowerPoint presentations",
+      title: "What is Artificial Intelligence? Complete Beginner's Guide",
+      description: "Learn everything about AI from basics to advanced concepts. Understand machine learning, deep learning, and how AI is transforming our world.",
+      badge: "AI Basics",
+      link: "/blog/what-is-artificial-intelligence-guide",
+    },
+    {
+      title: "Top 15 AI Tools Everyone Should Know in 2025",
+      description: "Discover the most powerful AI tools for productivity, creativity, and business. From ChatGPT to Midjourney - complete tool reviews and comparisons.",
       badge: "AI Tools",
-      link: "#ai-tools",
+      link: "/blog/top-15-ai-tools-2025",
     },
     {
-      title: "AI Integration in Next.js: Complete Guide",
-      description: "Learn how to integrate AI features into your Next.js applications with practical examples",
-      badge: "Tutorial",
-      link: "#tutorial",
+      title: "How AI is Changing Business Operations",
+      description: "Explore how artificial intelligence is revolutionizing business processes, automation, and decision-making across industries.",
+      badge: "Business AI",
+      link: "/blog/ai-changing-business-operations",
     },
     {
-      title: "ChatGPT vs Claude: Which AI is Better?",
-      description: "Comprehensive comparison of the top AI chatbots for different use cases",
-      badge: "Comparison",
-      link: "#ai-comparison",
+      title: "Machine Learning vs Deep Learning: What's the Difference?",
+      description: "Understand the key differences between machine learning and deep learning. Learn when to use each approach for your projects.",
+      badge: "ML vs DL",
+      link: "/blog/machine-learning-vs-deep-learning",
     },
     {
-      title: "AI Content Writing Tools Review",
-      description: "Top AI tools for automated content creation and copywriting",
-      badge: "Content",
-      link: "#ai-content",
+      title: "AI Ethics and Future Implications",
+      description: "Dive deep into AI ethics, bias, privacy concerns, and what the future holds for artificial intelligence in society.",
+      badge: "AI Ethics",
+      link: "/blog/ai-ethics-future-implications",
+    },
+    {
+      title: "How to Start Learning AI and Machine Learning",
+      description: "Complete roadmap for beginners to start their AI journey. Best courses, resources, and step-by-step learning path.",
+      badge: "Learning AI",
+      link: "/blog/how-to-start-learning-ai-ml",
     },
   ],
   "Blogs": [
     {
-      title: "How to Start Blog and Make Money",
-      description: "Complete beginner guide to starting a profitable blog with monetization strategies",
-      badge: "Blogging",
-      link: "#blogging-guide",
-    },
-    {
-      title: "Importance of SEO in Digital Marketing",
-      description: "Complete guide to SEO strategies and techniques to improve website visibility",
+      title: "10 Essential SEO Strategies That Actually Work in 2025",
+      description: "Discover proven SEO techniques that deliver real results. Learn the strategies that top-performing websites use to dominate search rankings.",
       badge: "SEO",
-      link: "#seo-guide",
+      link: "/blog/essential-seo-strategies-2025",
     },
     {
-      title: "WordPress vs Webflow: Which is Better?",
-      description: "Detailed comparison of WordPress and Webflow for website building",
-      badge: "Comparison",
-      link: "#wordpress-vs-webflow",
+      title: "How AI Tools Are Revolutionizing Content Creation",
+      description: "Explore the latest AI-powered content creation tools and learn how to leverage them for better productivity and quality.",
+      badge: "AI Tools",
+      link: "/blog/ai-content-creation-tools",
     },
     {
-      title: "Digital Marketing Trends 2024",
-      description: "Latest trends and strategies in digital marketing for business growth",
+      title: "Complete Guide to Building a Professional Website",
+      description: "Step-by-step guide to creating a stunning, professional website that converts visitors into customers.",
+      badge: "Web Development",
+      link: "/blog/professional-website-guide",
+    },
+    {
+      title: "Digital Marketing Trends Every Business Should Know",
+      description: "Stay ahead of the competition with these emerging digital marketing trends that are shaping the future of online business.",
       badge: "Marketing",
-      link: "#marketing-trends",
+      link: "/blog/digital-marketing-trends-2025",
     },
   ],
   "Tools": [
@@ -124,7 +136,7 @@ const categories = [
 ]
 
 export default function Resources() {
-  const [activeCategory, setActiveCategory] = useState("Tools")
+  const [activeCategory, setActiveCategory] = useState("Blogs")
 
   return (
     <section className="py-20 bg-white dark:bg-gray-900">

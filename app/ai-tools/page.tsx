@@ -122,9 +122,9 @@ export default function AIToolsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" asChild className="bg-white text-blue-600 hover:bg-gray-100">
-              <Link href="/services">
+              <a href="https://wa.me/919352410667?text=Hi!%20I%27m%20interested%20in%20AI%20consultation%20and%20tools%20for%20my%20business." target="_blank" rel="noopener noreferrer">
                 Get AI Consultation
-              </Link>
+              </a>
             </Button>
             <div className="flex gap-6 text-sm text-blue-100">
               <span className="flex items-center gap-2">

@@ -145,17 +145,17 @@ export default function ServicesPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" asChild className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
-                <Link href="#contact">
+              <Link href="/#contact">
+                <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 flex items-center">
                   Get Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="w-full sm:w-auto text-lg px-8 py-4">
-                <Link href="#services">
+                </Button>
+              </Link>
+              <Link href="#services">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 py-4">
                   View Our Services
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -320,11 +320,11 @@ export default function ServicesPage() {
             Let's discuss your project and create something amazing together. Get your free consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" asChild className="bg-white text-blue-600 hover:bg-gray-100">
-              <Link href="#contact">
+            <Link href="/#contact">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
                 Get Free Consultation
-              </Link>
-            </Button>
+              </Button>
+            </Link>
             <div className="flex gap-6 text-sm text-blue-100">
               <span className="flex items-center gap-2">
                 <Check className="w-4 h-4" />

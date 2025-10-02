@@ -220,7 +220,7 @@ ${req.callToAction === 'Custom CTA' ? 'Let\'s connect!' : req.callToAction}`
     // Generate variations based on style
     const variations = baseNames.map(name => {
       switch (req.style) {
-        case 'Modern': return name + ' 2024'
+        case 'Modern': return name + ' 2025'
         case 'Classic': return 'The ' + name
         case 'Creative': return name.replace(' ', ' & ')
         case 'Professional': return name + ' Pro'
@@ -262,7 +262,7 @@ ${req.callToAction === 'Custom CTA' ? 'Let\'s connect!' : req.callToAction}`
 
   const generateMockUsernames = (req: UsernameRequest): GeneratedUsernames => {
     const baseName = req.name.toLowerCase().replace(/\s+/g, '')
-    const numbers = req.includeNumbers ? ['123', '2024', '99', '01', '88'] : ['']
+    const numbers = req.includeNumbers ? ['123', '2025', '99', '01', '88'] : ['']
     const separators = req.includeUnderscores ? ['_', ''] : ['']
     
     const usernames = []

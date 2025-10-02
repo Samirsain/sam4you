@@ -24,22 +24,22 @@ export default function AboutPage() {
               About <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Sam4You</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              We design systems that grow while you sleep. Transforming businesses through innovative digital solutions.
+              Sam4You is a digital platform that brings AI-powered tools, SEO resources, and web solutions. Our mission is to empower creators, businesses, and students with smart technology.
             </p>
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" asChild className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-lg px-8 py-4">
-                <Link href="/services">
+              <Link href="/services">
+                <Button size="lg" className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-lg px-8 py-4 flex items-center">
                   Our Services
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="w-full sm:w-auto text-lg px-8 py-4">
-                <Link href="#contact">
+                </Button>
+              </Link>
+              <a href="https://wa.me/919352410667?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20you%20about%20your%20services." target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 py-4">
                   Get in Touch
-                </Link>
-              </Button>
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -51,13 +51,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                Our Mission
+                We focus on website development, digital marketing, and AI tools
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                At Sam4You, we believe in empowering businesses through technology. Our mission is to create digital solutions that not only meet your current needs but scale with your growth.
+                Including content generation, SEO checker, speed analysis, and many more features.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                We combine technical expertise with strategic thinking to deliver results that matter. From web development to AI automation, we're your partners in digital transformation.
+                Our vision is to create a digital hub that makes every user's online journey easy and productive.
               </p>
               <div className="flex items-center gap-4">
                 <Button asChild>
@@ -86,31 +86,31 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Values
+              Why Choose Sam4You?
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              The principles that guide everything we do
+              Our key features that empower your success
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                icon: Target,
-                title: "Results-Driven",
-                description: "We focus on delivering measurable outcomes that drive your business forward.",
+                icon: Star,
+                title: "Free and easy-to-use tools",
+                description: "All tools are completely free and extremely easy to use.",
                 color: "text-blue-500"
               },
               {
-                icon: Users,
-                title: "Client-First",
-                description: "Your success is our success. We prioritize your needs and goals in everything we do.",
+                icon: Target,
+                title: "Latest digital marketing insights",
+                description: "We keep you updated with industry's latest trends and insights.",
                 color: "text-green-500"
               },
               {
-                icon: Award,
-                title: "Excellence",
-                description: "We maintain the highest standards of quality and innovation in all our solutions.",
+                icon: Users,
+                title: "Reliable resources for professionals & learners",
+                description: "We provide trusted resources for both professionals and students.",
                 color: "text-purple-500"
               }
             ].map((item, index) => (
@@ -177,11 +177,14 @@ export default function AboutPage() {
                   className="w-full h-full rounded-full object-cover border-4 border-orange-200 dark:border-orange-800"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">SamirSain</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Samir Sain</h3>
               <p className="text-orange-600 dark:text-orange-400 font-medium mb-4">Founder & Lead Developer</p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                With over 8 years of experience in digital transformation, SamirSain founded Sam4You with a vision to democratize technology for businesses of all sizes. His expertise spans web development, AI integration, and strategic growth marketing.
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                With over 4 years of experience in digital transformation, Samir Sain founded Sam4You with the vision to make technology simple, accessible, and impactful for everyone. His expertise spans web development, AI integration, and growth marketing, helping businesses and creators grow in the digital era.
               </p>
+              <blockquote className="text-lg text-gray-700 dark:text-gray-300 italic border-l-4 border-orange-500 pl-4 my-6">
+                "I believe technology should empower people, not complicate their journey." – Samir Sain
+              </blockquote>
               <div className="flex justify-center gap-4 mt-6">
                 <Button variant="outline" asChild>
                   <Link href="/services">View Services</Link>
@@ -219,9 +222,9 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" asChild className="bg-white text-orange-600 hover:bg-gray-100">
-              <Link href="/services">
+              <a href="https://wa.me/919352410667?text=Hi!%20I%27d%20like%20to%20get%20started%20with%20a%20free%20consultation." target="_blank" rel="noopener noreferrer">
                 Get Started
-              </Link>
+              </a>
             </Button>
             <div className="flex gap-6 text-sm text-orange-100">
               <span className="flex items-center gap-2">

@@ -50,23 +50,74 @@ export default function PinterestDownloaderPage() {
     setVideoInfo(null)
 
     try {
-      // Simulate video info extraction
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      // Mock video info
-      setVideoInfo({
-        title: "Beautiful Nature Video",
-        thumbnail: "/placeholder-video.jpg",
-        duration: "2:30",
-        size: "15.2 MB"
+      // Try to use the API first
+      const response = await fetch('/api/download-pinterest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: urlToProcess }),
       })
 
-      // Simulate download process
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      if (response.ok) {
+        const data = await response.json()
+        
+        if (data.error) {
+          throw new Error(data.error)
+        }
+
+        // Set video info
+        setVideoInfo({
+          title: data.title || "Pinterest Video",
+          thumbnail: data.thumbnail || "/placeholder-video.jpg",
+          duration: data.duration || "Unknown",
+          size: data.size || "Unknown"
+        })
+
+        // Create download link
+        if (data.downloadUrl) {
+          // Create a temporary link and trigger download
+          const link = document.createElement('a')
+          link.href = data.downloadUrl
+          link.download = data.filename || 'pinterest-video.mp4'
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+          
+          setDownloadSuccess("Video downloaded successfully! Check your downloads folder.")
+        } else {
+          setDownloadError("No video found in this Pinterest post.")
+        }
+      } else {
+        // Fallback: Show instructions for manual download
+        setVideoInfo({
+          title: "Pinterest Video Download Instructions",
+          thumbnail: "/placeholder-video.jpg",
+          duration: "N/A",
+          size: "N/A"
+        })
+        
+        setDownloadSuccess(`To download this Pinterest video manually:
+        
+1. Right-click on the video in Pinterest
+2. Select "Save video as..." or "Download video"
+3. Or use browser extensions like "Video DownloadHelper"
+
+Alternative: Copy the video URL and use online video downloaders like:
+- y2mate.com
+- savefrom.net
+- videodownloader.net`)
+      }
       
-      setDownloadSuccess("Video downloaded successfully! Check your downloads folder.")
     } catch (err) {
-      setDownloadError("Failed to download video. Please check the URL and try again.")
+      // Show helpful error message with alternatives
+      setDownloadError(`Download failed: ${err instanceof Error ? err.message : 'Unknown error'}
+
+Try these alternatives:
+• Right-click the video on Pinterest → "Save video as"
+• Use browser extensions (Video DownloadHelper, etc.)
+• Copy URL and use online downloaders (y2mate, savefrom.net)
+• Pinterest mobile app allows saving videos`)
     } finally {
       setIsDownloading(false)
     }

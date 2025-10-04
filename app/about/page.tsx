@@ -196,7 +196,7 @@ export default function AboutPage() {
               
               {/* Social Links */}
               <div className="flex justify-center gap-4 mt-6">
-                <a href="https://instagram.com/samirsain" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors" aria-label="Instagram">
+                <a href="https://instagram.com/codexmir" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a href="https://github.com/samirsain" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">

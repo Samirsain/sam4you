@@ -28,7 +28,7 @@ export default function SitemapPage() {
       links: [
         { name: "GitHub Profile", url: "https://github.com/samirsain", description: "Our open-source projects and code", external: true },
         { name: "LinkedIn Profile", url: "https://linkedin.com/in/samirsain", description: "Professional network and updates", external: true },
-        { name: "Instagram", url: "https://instagram.com/samir_sain0001", description: "Behind-the-scenes and updates", external: true },
+        { name: "Instagram", url: "https://instagram.com/codexmir", description: "Behind-the-scenes and updates", external: true },
       ]
     },
     {

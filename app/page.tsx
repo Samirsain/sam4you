@@ -2,11 +2,10 @@ import Header from "@/components/header"
 import Hero from "@/components/hero"
 import Resources from "@/components/resources"
 import Testimonials from "@/components/testimonials"
-import FAQ from "@/components/faq"
+import FAQSection from "@/components/faq-section"
 import Newsletter from "@/components/newsletter"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
-import FAQSection from "@/components/faq-section"
 import NewsletterSignup from "@/components/newsletter-signup"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -92,7 +91,6 @@ export default function Home() {
       </section>
 
       <Testimonials />
-      <FAQ />
       <FAQSection />
       
       {/* Newsletter Signup Section */}

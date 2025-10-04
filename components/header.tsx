@@ -35,7 +35,6 @@ export default function Header() {
     { href: "/services", label: "Services" },
     { href: "/ai-tools", label: "AI Tools" },
     { href: "/blog", label: "Blog" },
-    { href: "/blogger-import", label: "Import" },
     { href: "/about", label: "About" },
     { href: "#contact", label: "Contact" },
   ]

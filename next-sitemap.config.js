@@ -3,7 +3,7 @@ module.exports = {
   siteUrl: process.env.SITE_URL || 'https://sam4you.vercel.app',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: ['/api/*', '/admin/*', '/sitemap.xml'],
+  exclude: ['/api/*', '/admin/*', '/sitemap.xml', '/sitemap', '/robots.txt'],
   robotsTxtOptions: {
     policies: [
       {
@@ -29,7 +29,7 @@ module.exports = {
       changeFrequency = 'weekly';
     } else if (path.startsWith('/blog')) {
       priority = 0.8;
-      changeFrequency = 'daily';
+      changeFrequency = 'monthly';
     } else if (path.startsWith('/tools/')) {
       priority = 0.8;
       changeFrequency = 'weekly';

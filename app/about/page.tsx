@@ -170,7 +170,7 @@ export default function AboutPage() {
             <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center">
               <div className="w-32 h-32 mx-auto mb-6 relative">
                 <Image
-                  src="/founder.png"
+                  src="/founder.svg"
                   alt="SamirSain - Founder of Sam4You"
                   width={128}
                   height={128}

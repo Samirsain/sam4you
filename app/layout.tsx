@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sam4you.vercel.app"),
   title: "Sam4You - Build Smarter Digital Solutions",
   description:
     "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
@@ -34,16 +35,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Sam4You - Build Smarter Digital Solutions",
-    description: "Professional web development, SEO, AI tools, and automation services.",
+    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
     type: "website",
     siteName: "Sam4You",
-    images: [{ url: "/favicon.png" }],
+    url: "https://sam4you.vercel.app",
+    images: [
+      {
+        url: "/professional-corporate-business-website--hero-sect.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sam4You - Professional Digital Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sam4You - Build Smarter Digital Solutions",
-    description: "Professional web development, SEO, AI tools, and automation services.",
-    creator: "@sam4you",
+    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
+    creator: "@codexmir",
+    images: ["/professional-corporate-business-website--hero-sect.jpg"],
   },
   generator: "Sam4You",
 }

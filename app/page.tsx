@@ -6,6 +6,8 @@ import FAQ from "@/components/faq"
 import Newsletter from "@/components/newsletter"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
+import FAQSection from "@/components/faq-section"
+import NewsletterSignup from "@/components/newsletter-signup"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Check, Star } from "lucide-react"
@@ -91,7 +93,23 @@ export default function Home() {
 
       <Testimonials />
       <FAQ />
-      <Newsletter />
+      <FAQSection />
+      
+      {/* Newsletter Signup Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Stay Updated
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Get the latest insights, tips, and updates delivered to your inbox
+            </p>
+          </div>
+          <NewsletterSignup />
+        </div>
+      </section>
+      
       <Contact />
       <Footer />
     </main>

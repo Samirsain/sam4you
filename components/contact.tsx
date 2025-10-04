@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, MessageCircle, CheckCircle, AlertCircle } from "lucide-react"
 import { useState } from "react"
+import { useToast } from "@/components/ui/use-toast"
 
 // Formspree endpoint
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myznwrqa'
@@ -20,6 +21,7 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -42,12 +44,22 @@ export default function Contact() {
       if (response.ok) {
         setSubmitStatus('success')
         setFormData({ name: "", email: "", message: "" })
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully. We'll get back to you soon!",
+          variant: "success",
+        })
       } else {
         throw new Error('Failed to submit form')
       }
     } catch (error) {
       console.error('Error submitting form:', error)
       setSubmitStatus('error')
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      })
     } finally {
       setIsSubmitting(false)
     }

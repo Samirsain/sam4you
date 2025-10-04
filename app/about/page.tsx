@@ -168,13 +168,13 @@ export default function AboutPage() {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg text-center">
-              <div className="w-32 h-32 mx-auto mb-6 relative">
+              <div className="w-40 h-40 mx-auto mb-6 relative">
                 <Image
                   src="/founder.svg"
                   alt="SamirSain - Founder of Sam4You"
-                  width={128}
-                  height={128}
-                  className="w-full h-full rounded-full object-cover border-4 border-orange-200 dark:border-orange-800"
+                  width={160}
+                  height={160}
+                  className="w-full h-full rounded-full object-contain border-4 border-orange-200 dark:border-orange-800 bg-gray-50 dark:bg-gray-800 p-2"
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Samir Sain</h3>

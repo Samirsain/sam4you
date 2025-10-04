@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Host
+Host: https://sam4you.vercel.app
+
+# Sitemaps
+Sitemap: https://sam4you.vercel.app/sitemap.xml

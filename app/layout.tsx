@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
+import AIAssistant from "@/components/ai-assistant"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -73,6 +74,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <Suspense fallback={null}>{children}</Suspense>
+          <AIAssistant />
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

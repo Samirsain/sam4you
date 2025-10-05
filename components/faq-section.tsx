@@ -66,39 +66,39 @@ export default function FAQSection() {
   }
 
   return (
-    <section className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">
+    <section className="py-16 sm:py-20 md:py-32 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-balance">
             Frequently Asked <span className="text-primary">Questions</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
             Find answers to common questions about our services, process, and pricing
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4">
           {faqData.map((item) => (
-            <Card key={item.id} className="border-border/50">
-              <CardHeader className="pb-3">
+            <Card key={item.id} className="border-border/50 overflow-hidden">
+              <CardHeader className="pb-2 sm:pb-3 px-4 sm:px-6">
                 <Button
                   variant="ghost"
-                  className="w-full justify-between p-0 h-auto text-left"
+                  className="w-full justify-between p-0 h-auto text-left hover:bg-transparent"
                   onClick={() => toggleItem(item.id)}
                 >
-                  <CardTitle className="text-lg font-medium pr-4">
+                  <CardTitle className="text-base sm:text-lg font-medium pr-2 sm:pr-4 leading-tight">
                     {item.question}
                   </CardTitle>
                   {openItems.includes(item.id) ? (
-                    <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                    <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
                   )}
                 </Button>
               </CardHeader>
               {openItems.includes(item.id) && (
-                <CardContent className="pt-0">
-                  <p className="text-muted-foreground leading-relaxed">
+                <CardContent className="pt-0 px-4 sm:px-6 pb-4 sm:pb-6">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     {item.answer}
                   </p>
                 </CardContent>
@@ -107,11 +107,11 @@ export default function FAQSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
+        <div className="text-center mt-10 sm:mt-12">
+          <p className="text-sm sm:text-base text-muted-foreground mb-4 px-2">
             Still have questions? We're here to help!
           </p>
-          <Button asChild>
+          <Button asChild className="text-sm sm:text-base">
             <a href="#contact">Contact Us</a>
           </Button>
         </div>

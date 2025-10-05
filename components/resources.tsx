@@ -35,6 +35,12 @@ const resources = {
   ],
   "Free Tools": [
     {
+      title: "AI Content Generator",
+      description: "Generate high-quality content for blogs, social media, and marketing with AI-powered tools",
+      badge: "AI Tools",
+      link: "/tools/ai-content-generator",
+    },
+    {
       title: "Pinterest Downloader",
       description: "Download Pinterest pins with AI-powered Pinterest Downloader. Save images and videos from Pinterest easily.",
       badge: "Downloaders",

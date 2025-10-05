@@ -3,7 +3,7 @@ import Footer from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Star, Zap, Brain, MessageSquare, Image, Video, Music, Code, TrendingUp, DollarSign } from "lucide-react"
+import { Check, Star, Zap, Brain, MessageSquare, Image as ImageIcon, Video, Music, Code, TrendingUp, DollarSign } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -82,7 +82,7 @@ export default function FreeAIToolsGuide() {
       cons: ["Discord-based interface", "Paid service"],
       rating: 4.9,
       category: "Image Generation",
-      icon: Image,
+      icon: ImageIcon,
       color: "bg-purple-500"
     },
     {
@@ -101,7 +101,7 @@ export default function FreeAIToolsGuide() {
       cons: ["Requires ChatGPT Plus", "Limited customization"],
       rating: 4.5,
       category: "Image Generation",
-      icon: Image,
+      icon: ImageIcon,
       color: "bg-pink-500"
     },
     {
@@ -165,7 +165,7 @@ export default function FreeAIToolsGuide() {
 
   const categories = [
     { name: "General Purpose", count: 3, icon: Brain },
-    { name: "Image Generation", count: 2, icon: Image },
+    { name: "Image Generation", count: 2, icon: ImageIcon },
     { name: "Video Generation", count: 1, icon: Video },
     { name: "Code Generation", count: 1, icon: Code },
     { name: "Content Writing", count: 1, icon: MessageSquare }

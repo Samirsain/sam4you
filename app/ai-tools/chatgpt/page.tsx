@@ -3,7 +3,7 @@ import Footer from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Star, Zap, Brain, MessageSquare, Code, BookOpen, Users, TrendingUp, ExternalLink, ArrowLeft } from "lucide-react"
+import { Check, Star, Zap, Brain, MessageSquare, Code, BookOpen, Users, TrendingUp, ExternalLink, ArrowLeft, Smartphone } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 

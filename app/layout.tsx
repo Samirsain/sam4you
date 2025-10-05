@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   publisher: "Sam4You",
   icons: {
     icon: [
+      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
       { url: "/favicon s.png", sizes: "any", type: "image/png" },
       { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
     ],
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
     ],
     shortcut: ["/favicon.ico"],
     other: [
+      { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
       { rel: "icon", url: "/favicon s.png", type: "image/png" },
     ],
   },

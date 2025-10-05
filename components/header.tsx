@@ -1,17 +1,19 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Search } from "lucide-react"
+import { Menu, X, Search, ArrowRight } from "lucide-react"
 import Image from "next/image"
-// Theme toggle removed - using light mode only
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [searchResults, setSearchResults] = useState<any[]>([])
+  const [showResults, setShowResults] = useState(false)
+  const searchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let ticking = false
@@ -38,6 +40,47 @@ export default function Header() {
     { href: "/about", label: "About" },
     { href: "#contact", label: "Contact" },
   ]
+
+  // Search data
+  const searchData = [
+    { title: "ChatGPT", url: "/ai-tools/chatgpt", category: "AI Tools", description: "OpenAI's conversational AI" },
+    { title: "Claude AI", url: "/ai-tools/claude", category: "AI Tools", description: "Anthropic's AI assistant" },
+    { title: "Web Development", url: "/services", category: "Services", description: "Custom website development" },
+    { title: "AI Consultation", url: "/services", category: "Services", description: "AI implementation guidance" },
+    { title: "Blog", url: "/blog", category: "Content", description: "Latest articles and guides" },
+    { title: "Free AI Tools Guide", url: "/blog/free-ai-tools-guide", category: "Content", description: "Comprehensive AI tools review" },
+    { title: "Contact Us", url: "/contact", category: "Support", description: "Get in touch with our team" },
+    { title: "Privacy Policy", url: "/privacy", category: "Legal", description: "Privacy and data protection" },
+    { title: "Terms of Service", url: "/terms", category: "Legal", description: "Terms and conditions" },
+  ]
+
+  // Search functionality
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      const results = searchData.filter(item => 
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      setSearchResults(results)
+      setShowResults(true)
+    } else {
+      setSearchResults([])
+      setShowResults(false)
+    }
+  }, [searchQuery])
+
+  // Close search results when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowResults(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <header
@@ -74,9 +117,9 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Search Bar, Theme Toggle & CTA */}
+          {/* Search Bar & CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <div className={`relative transition-all duration-300 ${isSearchOpen ? 'w-64' : 'w-10'}`}>
+            <div ref={searchRef} className={`relative transition-all duration-300 ${isSearchOpen ? 'w-64' : 'w-10'}`}>
               <button
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
@@ -85,14 +128,54 @@ export default function Header() {
                 <Search size={18} />
               </button>
               {isSearchOpen && (
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search services, tools..."
-                  className="w-full h-10 pl-10 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
-                  autoFocus
-                />
+                <>
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search services, tools..."
+                    className="w-full h-10 pl-10 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+                    autoFocus
+                  />
+                  
+                  {/* Search Results Dropdown */}
+                  {showResults && searchResults.length > 0 && (
+                    <div className="absolute top-12 left-0 right-0 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg max-h-80 overflow-y-auto z-50">
+                      {searchResults.map((result, index) => (
+                        <Link
+                          key={index}
+                          href={result.url}
+                          className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-b border-border last:border-b-0"
+                          onClick={() => {
+                            setSearchQuery("")
+                            setShowResults(false)
+                            setIsSearchOpen(false)
+                          }}
+                        >
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-sm">{result.title}</span>
+                              <span className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">
+                                {result.category}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{result.description}</p>
+                          </div>
+                          <ArrowRight size={14} className="text-gray-400" />
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {/* No Results */}
+                  {showResults && searchResults.length === 0 && searchQuery.length > 0 && (
+                    <div className="absolute top-12 left-0 right-0 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg p-4 z-50">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+                        No results found for "{searchQuery}"
+                      </p>
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
@@ -127,6 +210,35 @@ export default function Header() {
                   placeholder="Search services, tools..."
                   className="w-full h-9 pl-9 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
                 />
+                
+                {/* Mobile Search Results */}
+                {showResults && searchResults.length > 0 && (
+                  <div className="absolute top-10 left-2 right-2 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
+                    {searchResults.map((result, index) => (
+                      <Link
+                        key={index}
+                        href={result.url}
+                        className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-b border-border last:border-b-0"
+                        onClick={() => {
+                          setSearchQuery("")
+                          setShowResults(false)
+                          setIsMobileMenuOpen(false)
+                        }}
+                      >
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium text-sm">{result.title}</span>
+                            <span className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">
+                              {result.category}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{result.description}</p>
+                        </div>
+                        <ArrowRight size={14} className="text-gray-400" />
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Theme toggle removed - using light mode only */}

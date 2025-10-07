@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Search, ArrowRight } from "lucide-react"
+import { Menu, X, Search, ArrowRight, ChevronDown, BarChart3, Smartphone, Link as LinkIcon, FileText, Globe, Code } from "lucide-react"
 import Image from "next/image"
 
 export default function Header() {
@@ -13,7 +13,9 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("")
   const [searchResults, setSearchResults] = useState<any[]>([])
   const [showResults, setShowResults] = useState(false)
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
+  const servicesRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let ticking = false
@@ -34,11 +36,63 @@ export default function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
+    { href: "/services", label: "Services", hasDropdown: true },
     { href: "/ai-tools", label: "AI Tools" },
+    { href: "/tools", label: "Free Tools" },
     { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "/contact", label: "Contact" },
+  ]
+
+  const servicesDropdown = [
+    {
+      icon: Search,
+      title: "SEO & Content Strategy",
+      description: "Content, keywords, structure",
+      href: "/services"
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile SEO",
+      description: "Mobile-first indexing, UX",
+      href: "/services"
+    },
+    {
+      icon: LinkIcon,
+      title: "Link Building",
+      description: "Earn quality backlinks",
+      href: "/services"
+    },
+    {
+      icon: FileText,
+      title: "Content Marketing",
+      description: "Create content that ranks",
+      href: "/services"
+    },
+    {
+      icon: BarChart3,
+      title: "On-Page SEO",
+      description: "Titles, schema, links, speed",
+      href: "/services"
+    },
+    {
+      icon: Search,
+      title: "Local SEO",
+      description: "Win nearby customers",
+      href: "/services"
+    },
+    {
+      icon: Globe,
+      title: "International SEO",
+      description: "Reach global markets",
+      href: "/services"
+    },
+    {
+      icon: Code,
+      title: "Web Design",
+      description: "Fast, responsive websites",
+      href: "/services"
+    }
   ]
 
   // Search data
@@ -70,11 +124,14 @@ export default function Header() {
     }
   }, [searchQuery])
 
-  // Close search results when clicking outside
+  // Close search results and services dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setShowResults(false)
+      }
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesDropdownOpen(false)
       }
     }
 
@@ -107,13 +164,59 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="relative" ref={link.hasDropdown ? servicesRef : null}>
+                {link.hasDropdown ? (
+                  <div
+                    className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                    onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                  >
+                    {link.label}
+                    <ChevronDown size={14} className={`transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )}
+                
+                {/* Services Dropdown */}
+                {link.hasDropdown && isServicesDropdownOpen && (
+                  <div 
+                    className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+                    onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                    onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                  >
+                    <div className="p-4">
+                      <div className="grid grid-cols-2 gap-2">
+                        {servicesDropdown.map((service, index) => (
+                          <Link
+                            key={index}
+                            href={service.href}
+                            className="group flex items-center gap-2 p-2 rounded-md hover:bg-gray-50 transition-colors"
+                            onClick={() => setIsServicesDropdownOpen(false)}
+                          >
+                            <div className="w-6 h-6 bg-gray-100 rounded-md flex items-center justify-center flex-shrink-0">
+                              <service.icon size={12} className="text-gray-600" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-medium text-xs text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {service.title}
+                              </h3>
+                              <p className="text-xs text-gray-500 truncate">
+                                {service.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -244,14 +347,56 @@ export default function Header() {
               {/* Theme toggle removed - using light mode only */}
               
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
+                <div key={link.href}>
+                  {link.hasDropdown ? (
+                    <div className="px-2">
+                      <button
+                        className="flex items-center justify-between w-full text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                        onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                      >
+                        {link.label}
+                        <ChevronDown size={14} className={`transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      
+                      {/* Mobile Services Dropdown */}
+                      {isServicesDropdownOpen && (
+                        <div className="ml-4 mt-2 space-y-1">
+                          {servicesDropdown.map((service, index) => (
+                            <Link
+                              key={index}
+                              href={service.href}
+                              className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-50 transition-colors"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false)
+                                setIsServicesDropdownOpen(false)
+                              }}
+                            >
+                              <div className="w-5 h-5 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
+                                <service.icon size={10} className="text-gray-600" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h3 className="font-medium text-xs text-gray-900">
+                                  {service.title}
+                                </h3>
+                                <p className="text-xs text-gray-500 truncate">
+                                  {service.description}
+                                </p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-2 block"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </div>
               ))}
               <div className="px-2 pt-2">
                 <Button asChild className="w-full text-sm">

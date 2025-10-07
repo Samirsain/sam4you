@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 
-const resources = {
+const resources: { [key: string]: any[] } = {
   "AI": [
     {
       title: "ChatGPT",
@@ -72,6 +72,12 @@ const resources = {
   ],
   "Free Tools": [
     {
+      title: "AI Image Generator",
+      description: "Generate stunning images from text descriptions using advanced AI technology",
+      badge: "AI Tools",
+      link: "/tools/image-generator",
+    },
+    {
       title: "AI Content Generator",
       description: "Generate high-quality content for blogs, social media, and marketing with AI-powered tools",
       badge: "AI Tools",
@@ -122,11 +128,29 @@ const resources = {
     {
       title: "CSS Unit Converter",
       description: "Convert between different CSS units - px, em, rem, %, vw, vh, and more",
-      badge: "Text Tools",
+      badge: "Web Tools",
       link: "/tools/css-unit-converter",
+    },
+    {
+      title: "SEO Checker",
+      description: "Analyze your website SEO performance and get actionable insights",
+      badge: "SEO Tools",
+      link: "/tools/seo-checker",
+    },
+    {
+      title: "Instagram Tools",
+      description: "Generate Instagram bios, name suggestions, and username ideas",
+      badge: "Social Media",
+      link: "/tools/instagram-tools",
     },
   ],
   "Blog": [
+    {
+      title: "Free AI Tools Guide - Complete List 2024",
+      description: "Discover the best free AI tools available in 2024. Complete guide to free AI tools for content creation, productivity, and business.",
+      badge: "AI Tools",
+      link: "/blog/free-ai-tools-guide",
+    },
     {
       title: "Supercharge your AI Workflow",
       description: "Find the right best AI tools for your workflow. Complete guide to AI tools and their applications.",
@@ -151,6 +175,12 @@ const resources = {
       badge: "AI Tools",
       link: "/blog/ai-content-creation-tools",
     },
+    {
+      title: "Best Free SEO Tools for Website Optimization",
+      description: "Comprehensive list of free SEO tools to improve your website's search engine ranking and visibility.",
+      badge: "SEO",
+      link: "/blog/free-seo-tools-guide",
+    },
   ],
 }
 
@@ -162,6 +192,9 @@ const categories = [
 
 export default function Resources() {
   const [activeCategory, setActiveCategory] = useState("AI")
+  
+  console.log("Active category:", activeCategory)
+  console.log("Resources for category:", resources[activeCategory])
 
   return (
     <section className="py-16 sm:py-20 bg-white dark:bg-gray-900">
@@ -188,7 +221,10 @@ export default function Resources() {
             return (
               <button
                 key={category.name}
-                onClick={() => setActiveCategory(category.name)}
+                onClick={() => {
+                  console.log("Category clicked:", category.name)
+                  setActiveCategory(category.name)
+                }}
                 className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                   activeCategory === category.name
                     ? "bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white"
@@ -204,12 +240,19 @@ export default function Resources() {
 
         {/* Resource Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
-          {resources[activeCategory].map((resource, index) => {
+          {resources[activeCategory] ? resources[activeCategory].map((resource, index) => {
             const Icon = resource.icon
             return (
               <Card
                 key={index}
-                className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600"
+                className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600 cursor-pointer"
+                onClick={() => {
+                  if (resource.external) {
+                    window.open(resource.link, '_blank', 'noopener,noreferrer')
+                  } else {
+                    window.location.href = resource.link
+                  }
+                }}
               >
                 {/* Badge */}
                 <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 flex flex-col gap-1 sm:gap-2">
@@ -263,41 +306,54 @@ export default function Resources() {
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     {resource.external ? (
                       <>
-                        <a 
-                          href={resource.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            window.open(resource.link, '_blank', 'noopener,noreferrer')
+                          }}
                           className="inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 px-3 py-2 rounded-md border border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                         >
                           Try Now
                           <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
-                        </a>
-                        <Link 
-                          href={resource.detailUrl || '#'}
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            if (resource.detailUrl) {
+                              window.location.href = resource.detailUrl
+                            }
+                          }}
                           className="inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 px-3 py-2 rounded-md border border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-900/20"
                         >
                           View Details
                           <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
-                        </Link>
+                        </button>
                       </>
                     ) : (
-                      <Link 
-                        href={resource.link}
-                        className={`inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link ${
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          window.location.href = resource.link
+                        }}
+                        className={`inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link px-3 py-2 rounded-md border ${
                           resource.link.startsWith('/tools/') 
-                            ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" 
-                            : "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300"
+                            ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20" 
+                            : "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-900/20"
                         }`}
                       >
                         {resource.link.startsWith('/tools/') ? 'Try Now' : 'Read More'}
                         <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
-                      </Link>
+                      </button>
                     )}
                   </div>
                 </CardContent>
               </Card>
             )
-          })}
+          }) : (
+            <div className="col-span-2 text-center py-8">
+              <p className="text-gray-500">No resources found for this category.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

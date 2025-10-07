@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, Sparkles, Download, Calculator, Hash, Package, Type, FileText, Code } from "lucide-react"
+import { ChevronLeft, ChevronRight, Sparkles, Download, Calculator, Hash, Package, Type, FileText, Code, Image } from "lucide-react"
 import Link from "next/link"
 
 const tools = [
@@ -81,6 +81,15 @@ const tools = [
   },
   {
     id: 9,
+    title: "AI Image Generator",
+    description: "Generate stunning images from text descriptions using advanced AI technology",
+    icon: Image,
+    link: "/tools/image-generator",
+    color: "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400",
+    badge: "AI Tools"
+  },
+  {
+    id: 10,
     title: "CSS Unit Converter",
     description: "Convert between different CSS units - px, em, rem, %, vw, vh, and more",
     icon: Code,
@@ -226,8 +235,8 @@ export default function ToolsCarousel() {
 
       {/* View All Tools Button */}
       <div className="text-center mt-6 sm:mt-8">
-        <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3">
-          <Link href="/ai-tools">
+        <Button asChild className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm sm:text-base px-6 py-2 sm:px-8 sm:py-3">
+          <Link href="/tools">
             View All Tools
           </Link>
         </Button>

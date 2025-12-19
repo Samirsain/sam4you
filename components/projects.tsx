@@ -8,6 +8,19 @@ import { useState, useEffect } from "react"
 
 const projects = [
     {
+        title: "Credify",
+        category: "FinTech",
+        description: "A modern AI-powered finance platform for effortless expense tracking, budget optimization, and wealth growth.",
+        longDescription: "Credify is a cutting-edge fintech solution that combines AI-driven insights with seamless finance management. It features a sleek dark-mode interface, interactive credit card displays, and integrations with major payment providers like Stripe, PayPal, and Apple Pay.",
+        results: ["10M+ Users", "Secure Payments", "AI-Driven Insights"],
+        tech: ["Next.js", "React", "Tailwind CSS", "Stripe API", "AI/ML"],
+        challenge: "Building a trustworthy and premium interface for a finance platform that millions of users would feel confident using with their sensitive financial data.",
+        solution: "We designed a dark-themed, glassmorphic UI with subtle animations and clear data visualization, combined with enterprise-grade security integrations.",
+        image: "/credify-hero.png",
+        color: "from-emerald-500 to-teal-600",
+        liveUrl: "https://credify-fintech.vercel.app/"
+    },
+    {
         title: "NuroxFit Clothing",
         category: "E-commerce",
         description: "A high-performance Shopify store for fitness apparel with custom theme optimization and high conversion rates.",
